@@ -10,6 +10,7 @@ public:
         for(int k=l;k<r;k++){
             int left = prefix[k + 1] - prefix[l];
             int right = prefix[r + 1] - prefix[k + 1];
+
             if(left < right){
                 ans = max(ans, left + solve(nums, l, k));
             }
@@ -27,9 +28,8 @@ public:
         prefix.resize(n + 1, 0);
         for(int i=0;i<n;i++){
             prefix[i + 1] = prefix[i] + stoneValue[i];
-        }
-        dp.assign(n,vector<int>(n, -1));
+        }   
+        dp.assign(n, vector<int>(n , -1));
         return solve(stoneValue, 0, n - 1);
     }
 };
-auto init = ([](){ofstream("display_runtime.txt") << "0";});
