@@ -16,9 +16,8 @@ public:
             nums.push_back(head -> val);
             head = head -> next;
         }
-        vector<int> critical;
         int n = nums.size();
-        
+        vector<int> critical;
         for(int i=1;i<n-1;i++){
             if(nums[i] > nums[i - 1] && nums[i] > nums[i + 1]) critical.push_back(i);
             else if(nums[i] < nums[i - 1] && nums[i] < nums[i + 1]) critical.push_back(i);
