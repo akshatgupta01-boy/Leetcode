@@ -7,7 +7,7 @@ public:
         for(char c : s){
             for(int i=n-1;i>=0;i--){
                 if(c == t[i]){
-                    dp[i+1] += dp[i];
+                    dp[i + 1] += dp[i];
                 }
             }
         }
