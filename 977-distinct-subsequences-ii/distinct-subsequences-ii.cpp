@@ -7,12 +7,8 @@ public:
         for(int i=1;i<=n;i++){
             int curr = s[i - 1] - 'a';
             long long total = 0;
-            for(int j=0;j<26;j++){
-                total = (total + dp[i - 1][j]) % mod;
-            }
-            for(int j=0;j<26;j++){
-                dp[i][j] = dp[i-1][j];
-            }
+            for(int j=0;j<26;j++) total = (total + dp[i-1][j]) % mod;
+            for(int j=0;j<26;j++) dp[i][j] = dp[i-1][j];
             dp[i][curr] = (total + 1) % mod;
         }
         long long ans = 0;
