@@ -12,11 +12,11 @@ public:
                 if(mat[i][mid] > mat[maxRow][mid]) maxRow = i;
             }
             int leftVal = (mid > 0) ? mat[maxRow][mid - 1] : -1;
-            int rightVal = (mid < col - 1) ? mat[maxRow][mid + 1] : -1;
+            int rightVal = (mid < col - 1) ? mat[maxRow][mid + 1] : -1; 
             if(mat[maxRow][mid] > leftVal && mat[maxRow][mid] > rightVal) return {maxRow, mid};
             if(leftVal > mat[maxRow][mid]) right = mid - 1;
             else left = mid + 1;
-        }
+        } 
         return {-1, -1};
     }
 };
