@@ -1,15 +1,17 @@
 class Solution {
 public:
+    using ll = long long;
+    const ll mod = 1e9 + 7;
+    vector<vector<ll>> dp;
+    ll solve(int n, int k){
+        if(k == 0 || k == n) return 1;
+        if(dp[n][k]!=-1) return dp[n][k]; 
+        return dp[n][k] = (solve(n - 1, k - 1) + solve(n - 1, k)) % mod;
+    }
     int numberOfSets(int n, int k) {
-        const int MOD = 1e9 + 7;
-        vector<vector<long long>> dp(n + k, vector<long long> (2 * k + 1, 0));
-        for(int i=0;i<n;i++) dp[i][0] = 1;
-        for(int i=1;i<n+k;i++){
-            for(int j=1;j<=2*k;j++){
-                dp[i][j] = dp[i-1][j];
-                if(j <= i) dp[i][j] = (dp[i][j] + dp[i-1][j-1]) % MOD;
-            }
-        }
-        return dp[n + k - 1][2 * k];
+        int N = n + k - 1;
+        int K = 2 * k;
+        dp.assign(N+1, vector<ll> (K + 1, -1));
+        return solve(N, K); 
     }
 };
