@@ -10,7 +10,7 @@ public:
             last[c] = i;
         }
         vector<pair<int, int>> interval;
-        for(int c=0;c<26;c++){
+        for(int c = 0; c < 26; c++){
             if(last[c] == -1) continue;
             int l = first[c];
             int r = last[c];
@@ -23,12 +23,12 @@ public:
                     break;
                 }
                 r = max(r, last[x]);
-            } 
+            }
             if(valid) interval.push_back({l, r});
         }
         sort(interval.begin(), interval.end(), [](auto &a, auto &b){ return a.second < b.second;});
-        vector<string> ans;
         int end = -1;
+        vector<string> ans;
         for(auto[l, r] : interval){
             if(l > end){
                 ans.push_back(s.substr(l, r - l + 1));
