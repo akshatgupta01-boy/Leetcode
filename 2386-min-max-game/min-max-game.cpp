@@ -6,7 +6,8 @@ public:
             for(int i=0;i<nums.size();i+=2){
                 if(ans.size() % 2 == 0){
                     ans.push_back(min(nums[i], nums[i + 1]));
-                }else{
+                }
+                else{
                     ans.push_back(max(nums[i], nums[i + 1]));
                 }
             }
