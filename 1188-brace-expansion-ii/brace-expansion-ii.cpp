@@ -1,64 +1,43 @@
 class Solution {
 public:
-    set<string> solve(string &s, int &i) {
-
+    set<string> solve(string &exp, int &i){
         set<string> res;
-        set<string> cur = {""};
-
-        while (i < s.size() && s[i] != '}') {
-
-            if (s[i] == '{') {
-                i++; // skip '{'
-
-                set<string> inside = solve(s, i);
-
-                i++; // skip '}'
-
-                // Concatenate cur with inside
+        set<string> curr = {""};
+        while(i < exp.size() && exp[i] != '}'){
+            if(exp[i] == '{'){
+                i++;
+                set<string> inside = solve(exp, i);
+                i++;
                 set<string> temp;
-
-                for (string a : cur) {
-                    for (string b : inside) {
+                for(string a : curr){
+                    for(string b : inside){
                         temp.insert(a + b);
                     }
-                }
-
-                cur = temp;
+                } 
+                curr = temp;
             }
-
-            else if (s[i] == ',') {
-                // Union current part with the next part
-                res.insert(cur.begin(), cur.end());
-
-                cur = {""};
+            else if(exp[i] == ','){
+                res.insert(curr.begin(), curr.end());
+                curr = {""};
                 i++;
             }
-
-            else {
-                // Normal character
-                char ch = s[i];
+            else{
+                char ch = exp[i];
                 i++;
-
                 set<string> temp;
-
-                for (string x : cur) {
-                    temp.insert(x + ch);
+                for(string a : curr){
+                    temp.insert(a + ch);
                 }
-
-                cur = temp;
+                curr = temp;
             }
         }
-
-        res.insert(cur.begin(), cur.end());
-
+        res.insert(curr.begin(), curr.end());
         return res;
     }
 
     vector<string> braceExpansionII(string expression) {
         int i = 0;
-
-        set<string> ans = solve(expression, i);
-
-        return vector<string>(ans.begin(), ans.end());
+        set<string> res = solve(expression, i);
+        return vector<string> (res.begin(), res.end());
     }
 };
