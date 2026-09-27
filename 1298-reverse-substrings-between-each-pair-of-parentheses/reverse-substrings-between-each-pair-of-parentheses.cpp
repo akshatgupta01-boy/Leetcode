@@ -10,7 +10,6 @@ public:
                 st.pop();
                 reverse(s.begin() + start + 1, s.begin() + i);
             }
-            
         }
         string ans;
         for(char c : s){
