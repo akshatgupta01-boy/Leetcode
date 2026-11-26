@@ -11,13 +11,8 @@ public:
                 i++;
                 j++;
             }
-            else if(s[j] < g[i]) j++;
+            else j++;
         }
-        // for(int i=0;i<g.size();i++){
-        //     for(int j=0;j<s.size();j++){
-        //         if(g[i] <= s[j]) ans++;
-        //     }
-        // }
         return ans;
     }
 };
